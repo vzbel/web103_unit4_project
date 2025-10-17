@@ -1,4 +1,4 @@
-import { pool } from "../config/database";
+import { pool } from "../config/database.js";
 
 // Send JSON with all characters data
 const getCharacters = async (req, res) => {
