@@ -1,9 +1,9 @@
 import React from 'react'
 import { useRoutes } from 'react-router-dom'
 import Navigation from './components/Navigation'
-import ViewCars from './pages/ViewCars'
+import ViewCharacters from './pages/ViewCharacters'
 import EditCar from './pages/EditCar'
-import CreateCar from './pages/CreateCar'
+import CreateCharacter from './pages/CreateCharacter'
 import CarDetails from './pages/CarDetails'
 import './App.css'
 
@@ -11,24 +11,24 @@ const App = () => {
   let element = useRoutes([
     {
       path: '/',
-      element: <CreateCar title='BOLT BUCKET | Customize' />
+      element: <CreateCharacter title='HeroForge | Customize' />
     },
     {
       path:'/customcars',
-      element: <ViewCars title='BOLT BUCKET | Custom Cars' />
+      element: <ViewCharacters title='HeroForge | Custom Characters' />
     },
     {
       path: '/customcars/:id',
-      element: <CarDetails title='BOLT BUCKET | View' />
+      element: <CarDetails title='HeroForge | View' />
     },
     {
       path: '/edit/:id',
-      element: <EditCar title='BOLT BUCKET | Edit' />
+      element: <EditCar title='HeroForge | Edit' />
     }
   ])
 
   return (
-    <div className='app'>
+    <div className='app max-w-6xl mx-auto min-h-screen'>
 
       <Navigation />
 
