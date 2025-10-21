@@ -2,9 +2,9 @@ import React from 'react'
 import { useRoutes } from 'react-router-dom'
 import Navigation from './components/Navigation'
 import ViewCharacters from './pages/ViewCharacters'
-import EditCar from './pages/EditCar'
+import EditCar from './pages/EditCharacter'
 import CreateCharacter from './pages/CreateCharacter'
-import CarDetails from './pages/CarDetails'
+import CharacterDetails from './pages/CharacterDetails'
 import './App.css'
 
 const App = () => {
@@ -14,12 +14,12 @@ const App = () => {
       element: <CreateCharacter title='HeroForge | Customize' />
     },
     {
-      path:'/customcars',
+      path:'/customcharacters',
       element: <ViewCharacters title='HeroForge | Custom Characters' />
     },
     {
-      path: '/customcars/:id',
-      element: <CarDetails title='HeroForge | View' />
+      path: '/customcharacters/:id',
+      element: <CharacterDetails title='HeroForge | View' />
     },
     {
       path: '/edit/:id',

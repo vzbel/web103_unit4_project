@@ -12,6 +12,22 @@ const getCharacters = async (req, res) => {
   }
 };
 
+const getCharacter = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const result = await pool.query(
+      `
+        SELECT * FROM characters
+        WHERE id = $1
+      `,
+      [id]
+    );
+    res.json(result.rows[0]);
+  } catch (error) {
+    res.status(409).json({ error: error.message });
+  }
+};
+
 // Create a new character given character info
 const createCharacter = async (req, res) => {
   const { name, class: characterClass, weapon, ability } = req.body;
@@ -74,6 +90,7 @@ const deleteCharacter = async (req, res) => {
 
 export default {
   getCharacters,
+  getCharacter,
   createCharacter,
   updateCharacter,
   deleteCharacter,

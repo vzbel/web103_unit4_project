@@ -9,7 +9,7 @@ const Navigation = () => {
 
             <ul className="flex gap-5">
                 <li className="p-2 bg-blue-500 text-white rounded-sm"><a href='/' role='button'>Customize</a></li>
-                <li className="p-2 bg-blue-500 text-white rounded-sm"><a href='/customcars' role='button'>View Characters</a></li>
+                <li className="p-2 bg-blue-500 text-white rounded-sm"><a href='/customcharacters' role='button'>View Characters</a></li>
             </ul>
             
         </nav>
