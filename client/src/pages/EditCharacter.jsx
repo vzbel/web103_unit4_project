@@ -45,10 +45,19 @@ const EditCharacter = () => {
         await updateCharacter(characterInfo.id, character);
         navigate("/");
     } 
+
+    const selectedClass = classes.find(c => c.name === characterClass);
+    const selectedWeapon = weapons.find(w => w.name === weapon);
+    const selectedAbility = abilities.find(a => a.name === ability);
+    let totalPrice = (selectedClass?.coinPrice || 0) + 
+        (selectedWeapon?.coinPrice || 0) + 
+        (selectedAbility?.coinPrice || 0);
+    
+    let bgColor = selectedClass?.color || null; 
     return (
         characterInfo.id ?
 
-        <div className="mt-10">
+        <div className={`${bgColor ? bgColor : ""} mt-10`}>
             {characterInfo.id 
                 ?
                 <div className="max-w-lg mx-auto">
@@ -74,6 +83,7 @@ const EditCharacter = () => {
                                             {/* Image and name of class */}
                                             <img src={charClass.img} alt="character class image" className="block w-24 h-24 object-coverflex-shrink-0" />
                                             <p>{charClass.name}</p>
+                                            <p>⛁{charClass.coinPrice}</p>
                                         </div>
                                     </label>
                                 );
@@ -96,6 +106,7 @@ const EditCharacter = () => {
                                             {/* Image and name of class */}
                                             <img src={weaponItem.img} alt="character weapon image" className="block w-24 h-24 object-coverflex-shrink-0" />
                                             <p>{weaponItem.name}</p>
+                                            <p>⛁{weaponItem.coinPrice}</p>
                                         </div>
                                     </label>
                                 );
@@ -118,6 +129,7 @@ const EditCharacter = () => {
                                             {/* Image and name of class */}
                                             <img src={abilityItem.img} alt="character ability image" className="block w-24 h-24 object-coverflex-shrink-0" />
                                             <p>{abilityItem.name}</p>
+                                            <p>⛁ {abilityItem.coinPrice}</p>
                                         </div>
                                     </label>
                                 );
@@ -130,6 +142,7 @@ const EditCharacter = () => {
                 <div className="max-w-fit mx-auto flex justify-center gap-2 mt-6">
                     <input name="name" className="inline-block shadow-md p-2" type="text" placeholder="Sir John the Magical..." value={name} onChange={(e) => setName(e.target.value)}/>
                     <button type="submit" className="p-2 bg-blue-500 text-white rounded-sm">Update Character</button>
+                    <p className="ml-5 px-4 text-xl flex items-center bg-green-900 text-white font-mono">⛁${totalPrice}</p>
                 </div>
             </form>
         </div>
