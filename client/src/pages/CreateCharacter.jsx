@@ -4,12 +4,14 @@ import '../App.css'
 import {createCharacter} from "../services/CharactersAPI.jsx";
 import {classes, weapons, abilities} from "../components/characterinfo.js";
 import { useNavigate } from 'react-router-dom';
+import { isInvalidCombination } from '../components/characterinfo.js';
 
 const CreateCharacter = () => {
     const [name, setName] = React.useState("");
     const [characterClass, setCharacterClass] = React.useState("");
     const [weapon, setWeapon] = React.useState("");
     const [ability, setAbility] = React.useState("");
+    const [combinationError, setCombinationError] = React.useState("");
     const navigate = useNavigate();
 
     const selectedClass = classes.find(c => c.name === characterClass);
@@ -34,8 +36,13 @@ const CreateCharacter = () => {
         };
 
         // add character to DB
-        await createCharacter(character);
-        navigate("/customcharacters");
+        if(isInvalidCombination(characterClass, weapon, ability)){
+            setCombinationError("Invalid combination! Try another one.");
+            return;
+        }else{
+            await createCharacter(character);
+            navigate("/customcharacters");
+        }
     }
 
     return (
@@ -52,7 +59,7 @@ const CreateCharacter = () => {
                                     <label key={charClass.name} htmlFor="" className={`${charClass.name === characterClass ? "bg-blue-400 text-white" : ""} mb-10 shadow-sm focus-within:bg-blue-400`}>
                                         <div className="flex items-center gap-2">
                                             {/* Selection by radio, updates state as well */}
-                                            <input required type="radio" name="characterClass" value={charClass.name} onChange={(e) => setCharacterClass(e.target.value)}/>
+                                            <input required type="radio" name="characterClass" value={charClass.name} onChange={(e) => {setCharacterClass(e.target.value); setCombinationError("")}}/>
 
                                             {/* Image and name of class */}
                                             <img src={charClass.img} alt="character class image" className="block w-24 h-24 object-coverflex-shrink-0" />
@@ -75,7 +82,7 @@ const CreateCharacter = () => {
                                     <label key={weaponItem.name} htmlFor="" className={`${weaponItem.name === weapon ? "bg-blue-400 text-white" : ""} mb-10 shadow-sm focus-within:bg-blue-400`}>
                                         <div className="flex items-center gap-2">
                                             {/* Selection by radio, updates state as well */}
-                                            <input required type="radio" name="weapon" value={weaponItem.name} onChange={(e) => setWeapon(e.target.value)}/>
+                                            <input required type="radio" name="weapon" value={weaponItem.name} onChange={(e) => {setWeapon(e.target.value); setCombinationError("")}}/>
 
                                             {/* Image and name of class */}
                                             <img src={weaponItem.img} alt="character weapon image" className="block w-24 h-24 object-coverflex-shrink-0" />
@@ -98,7 +105,7 @@ const CreateCharacter = () => {
                                     <label key={abilityItem.name} htmlFor="" className={`${abilityItem.name === ability ? "bg-blue-400 text-white" : ""} mb-10 shadow-sm focus-within:bg-blue-400`}>
                                         <div className="flex items-center gap-2">
                                             {/* Selection by radio, updates state as well */}
-                                            <input required type="radio" name="ability" value={abilityItem.name} onChange={(e) => setAbility(e.target.value)}/>
+                                            <input required type="radio" name="ability" value={abilityItem.name} onChange={(e) => {setAbility(e.target.value); setCombinationError("")}}/>
 
                                             {/* Image and name of class */}
                                             <img src={abilityItem.img} alt="character ability image" className="block w-24 h-24 object-coverflex-shrink-0" />
@@ -117,6 +124,7 @@ const CreateCharacter = () => {
                     <input required name="name" className="inline-block shadow-md p-2" type="text" placeholder="Sir John the Magical..." onChange={(e) => setName(e.target.value)}/>
                     <button type="submit" className="p-2 bg-blue-500 text-white rounded-sm">Submit</button>
                     <p className="ml-5 px-4 text-xl flex items-center bg-green-900 text-white font-mono">⛁ {totalPrice}</p>
+                    {combinationError && <p className="ml-5 px-4 text-xl flex items-center bg-red-400 text-white font-mono">{combinationError}</p>}
                 </div>
             </form>
         </div>

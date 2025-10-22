@@ -80,3 +80,17 @@ export const getImage = (fromList, name) => {
     return abilities.find((item) => item.name === name).img;
   }
 };
+
+export const invalidCombinations = [
+  {class: "wizard", weapon: "sword", ability: "heal"},
+  {class: "healer", weapon: "bow", ability: "scratch"} 
+];
+
+export const isInvalidCombination = (charClass, weapon, ability) => {
+  return invalidCombinations.some(
+    combo =>
+      combo.class === charClass &&
+      combo.weapon === weapon && 
+      combo.ability === ability
+  );
+}
