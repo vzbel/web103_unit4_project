@@ -35,16 +35,16 @@ const CreateCharacter = () => {
                         <label htmlFor="character-class">Character Class</label>
                         <br />
                         {
-                            classes.map((characterClass) =>{
+                            classes.map((charClass) =>{
                                 return (
-                                    <label key={characterClass.name} htmlFor="" className="mb-10 shadow-sm">
+                                    <label key={charClass.name} htmlFor="" className={`${charClass.name === characterClass ? "bg-blue-400 text-white" : ""} mb-10 shadow-sm focus-within:bg-blue-400`}>
                                         <div className="flex items-center gap-2">
                                             {/* Selection by radio, updates state as well */}
-                                            <input type="radio" name="characterClass" value={characterClass.name} onChange={(e) => setCharacterClass(e.target.value)}/>
+                                            <input type="radio" name="characterClass" value={charClass.name} onChange={(e) => setCharacterClass(e.target.value)}/>
 
                                             {/* Image and name of class */}
-                                            <img src={characterClass.img} alt="character class image" className="block w-24 h-24 object-coverflex-shrink-0" />
-                                            <p>{characterClass.name}</p>
+                                            <img src={charClass.img} alt="character class image" className="block w-24 h-24 object-coverflex-shrink-0" />
+                                            <p>{charClass.name}</p>
                                         </div>
                                     </label>
                                 );
@@ -57,16 +57,16 @@ const CreateCharacter = () => {
                         <label htmlFor="character-class">Weapon</label>
                         <br />
                         {
-                            weapons.map((weapon) =>{
+                            weapons.map((weaponItem) =>{
                                 return (
-                                    <label key={weapon.name} htmlFor="" className="mb-10 shadow-sm">
+                                    <label key={weaponItem.name} htmlFor="" className={`${weaponItem.name === weapon ? "bg-blue-400 text-white" : ""} mb-10 shadow-sm focus-within:bg-blue-400`}>
                                         <div className="flex items-center gap-2">
                                             {/* Selection by radio, updates state as well */}
-                                            <input type="radio" name="weapon" value={weapon.name} onChange={(e) => setWeapon(e.target.value)}/>
+                                            <input type="radio" name="weapon" value={weaponItem.name} onChange={(e) => setWeapon(e.target.value)}/>
 
                                             {/* Image and name of class */}
-                                            <img src={weapon.img} alt="character weapon image" className="block w-24 h-24 object-coverflex-shrink-0" />
-                                            <p>{weapon.name}</p>
+                                            <img src={weaponItem.img} alt="character weapon image" className="block w-24 h-24 object-coverflex-shrink-0" />
+                                            <p>{weaponItem.name}</p>
                                         </div>
                                     </label>
                                 );
@@ -79,16 +79,16 @@ const CreateCharacter = () => {
                         <label htmlFor="character-class">Ability</label>
                         <br />
                         {
-                            abilities.map((ability) =>{
+                            abilities.map((abilityItem) =>{
                                 return (
-                                    <label key={ability.name} htmlFor="" className="mb-10 shadow-sm">
+                                    <label key={abilityItem.name} htmlFor="" className={`${abilityItem.name === ability ? "bg-blue-400 text-white" : ""} mb-10 shadow-sm focus-within:bg-blue-400`}>
                                         <div className="flex items-center gap-2">
                                             {/* Selection by radio, updates state as well */}
-                                            <input type="radio" name="ability" value={ability.name} onChange={(e) => setAbility(e.target.value)}/>
+                                            <input type="radio" name="ability" value={abilityItem.name} onChange={(e) => setAbility(e.target.value)}/>
 
                                             {/* Image and name of class */}
-                                            <img src={ability.img} alt="character ability image" className="block w-24 h-24 object-coverflex-shrink-0" />
-                                            <p>{ability.name}</p>
+                                            <img src={abilityItem.img} alt="character ability image" className="block w-24 h-24 object-coverflex-shrink-0" />
+                                            <p>{abilityItem.name}</p>
                                         </div>
                                     </label>
                                 );
