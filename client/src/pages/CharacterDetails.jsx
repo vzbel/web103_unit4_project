@@ -31,7 +31,6 @@ const CharacterDetails = () => {
     return (
         character.id ? 
         <div className="mt-10 mb-10 shadow-md rounded-md flex-1 max-w-xs min-w-[300px] mx-auto" key={character.id}>
-            {/* use character card here instead */}
             {/* name, class, weapon, ability */}
             <div className="bg-gray-900 text-white px-5 py-5">
                 <img className="w-28 h-36 object-cover mb-5" src={getImage("classes", character["class"])} alt="" />
@@ -46,8 +45,12 @@ const CharacterDetails = () => {
                 <img className="w-16" src={getImage("abilities", character.ability)} alt="" />
                 <p className="flex-1">ability: <br />{character.ability}</p>
             </div>
-            {/* <Link to={`/edit/${character.id}`} className="block px-8 py-5 bg-blue-400 text-white text-lg">Edit Character</Link>  */}
-            <button onClick={deleteCharacterHelper}className="block px-8 py-5 bg-blue-400 text-white text-lg">Delete</button>
+
+            {/* Go to edit page */}
+            <Link to={`/edit/${character.id}`} className="text-left block px-8 py-5 bg-blue-400 text-white text-lg">Edit</Link> 
+
+            {/* Delete character */}
+            <button onClick={deleteCharacterHelper}className="text-left w-full block px-8 py-5 bg-red-400 text-white text-lg">Delete</button>
         </div>
         : 
         <>Loading character...</>

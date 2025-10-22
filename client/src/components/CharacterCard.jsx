@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 // Card for the character, can be clicked
 // to navigate to the detail page
 const CharacterCard = (props) => {
-
     return (
         <div className="mb-10 shadow-md rounded-md flex-1 max-w-xs min-w-[300px]" key={props.id}>
             {/* use character card here instead */}

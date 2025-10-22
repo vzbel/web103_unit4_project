@@ -2,7 +2,7 @@ import React from 'react'
 import { useRoutes } from 'react-router-dom'
 import Navigation from './components/Navigation'
 import ViewCharacters from './pages/ViewCharacters'
-import EditCar from './pages/EditCharacter'
+import EditCharacter from './pages/EditCharacter'
 import CreateCharacter from './pages/CreateCharacter'
 import CharacterDetails from './pages/CharacterDetails'
 import './App.css'
@@ -23,7 +23,7 @@ const App = () => {
     },
     {
       path: '/edit/:id',
-      element: <EditCar title='HeroForge | Edit' />
+      element: <EditCharacter title='HeroForge | Edit' />
     }
   ])
 
