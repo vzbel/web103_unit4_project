@@ -9,7 +9,8 @@ const createCharactersTable = async () => {
             name VARCHAR(255) NOT NULL,
             class VARCHAR(255) NOT NULL,
             weapon VARCHAR(255) NOT NULL,
-            ability VARCHAR(255) NOT NULL
+            ability VARCHAR(255) NOT NULL,
+            price INTEGER
         );
     `;
 

@@ -30,12 +30,12 @@ const CharacterDetails = () => {
 
     return (
         character.id ? 
-        <div className="mt-10 mb-10 shadow-md rounded-md flex-1 max-w-xs min-w-[300px] mx-auto" key={character.id}>
+        <div className="mt-10 mb-10 shadow-md rounded-md flex-1 max-w-md min-w-[300px] mx-auto" key={character.id}>
             {/* name, class, weapon, ability */}
             <div className="bg-gray-900 text-white px-5 py-5">
-                <img className="w-28 h-36 object-cover mb-5" src={getImage("classes", character["class"])} alt="" />
-                <p className="text-2xl">{character.name} </p>
-                <p>class: {character["class"]}</p>
+                <img className="w-full h-fit object-cover mb-5" src={getImage("classes", character["class"])} alt="" />
+                <p className="text-4xl">{character.name}, {character["class"]} </p>
+                <p>⛁ {character.price}</p>
             </div>
             <div className="flex mt-5 gap-4 px-8 mb-5">
                 <img className="w-16" src={getImage("weapons", character.weapon)} alt="" />
